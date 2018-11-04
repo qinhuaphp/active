@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>活动管理系统 - 系统设置 </title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="<?php echo base_url();?>application/views/admin/styles/general.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url();?>application/views/admin/styles/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url();?>application/views/admin/js/placeholder.js"></script>
+</head>
+<body>
+
+<h1>
+<span class="action-span"><a>系统设置</a></span>
+<span class="action-span1"><a href="#">活动管理系统</a> </span><span id="search_id" class="action-span1"> - 系统设置 </span>
+<div style="clear:both"></div>
+</h1>
+
+<div class="main-div">
+  <form action="<?php echo site_url('admin/systemmng/index');?>" method="post" name="theForm" enctype="multipart/form-data">
+  <table width="100%" id="general-table">
+      <tr>
+        <td class="label">网站标题:</td>
+        <td>
+          <input type='text' name='title' maxlength="20" value="<?php echo set_value('title');?><?php echo isset($result[0]['setupvalue'])? $result[0]['setupvalue']:'';?>" size='27' placeholder="输入网站标题"/> 
+		  <font color="red">*<?php echo form_error('title');?></font>
+        </td>
+		
+      </tr>
+       <tr>
+        <td class="label">关键字:</td>
+        <td>
+          <input type='text' name='keywords' maxlength="20"  value="<?php echo set_value('keywords');?><?php echo isset($result[1]['setupvalue'])? $result[1]['setupvalue']:'';?>" size='27' placeholder="请输入关键字"/>
+		
+		  <font color="red">*<?php echo form_error('keywords');?></font>
+        </td>
+		
+      </tr>
+	  
+	  <tr>
+        <td class="label">用户初始密码:</td>
+        <td>
+          <input type='text' name='defaultpwd' maxlength="20"  value="<?php echo set_value('defaultpwd');?><?php echo isset($result[3]['setupvalue'])? $result[3]['setupvalue']:'';?>" size='27' placeholder="请输入初始密码"/>
+		
+		  <font color="red">*<?php echo form_error('defaultpwd');?></font>
+        </td>
+		
+      </tr>
+	  
+         <tr>
+        <td class="label">详细描述:</td>
+        <td>
+          <textarea  name='description' cols="25" rows="5" width="50" height="10"   placeholder="请输入描述"/>
+			<?php echo set_value('description');?><?php echo isset($result[2]['setupvalue'])? $result[2]['setupvalue']:'';?>
+			</textarea>
+		  <font color="red">*<?php echo form_error('description');?></font>
+        </td>
+		
+      </tr>
+      
+      </table>
+      <div class="button-div">
+        <input type="submit" value=" 确定 " />
+        <input type="reset" value=" 重置 " />
+      </div>
+   
+  </form>
+</div>
+
+<div id="footer">
+
+版权所有 ©雅集文化传媒有限公司，并保留所有权利。</div>
+
+</body>
+</html>

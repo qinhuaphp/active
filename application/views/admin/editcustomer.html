@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>活动管理系统 - 编辑客服信息 </title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="<?php echo base_url();?>application/views/admin/styles/general.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url();?>application/views/admin/styles/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url();?>application/views/admin/js/placeholder.js"></script>
+</head>
+<body>
+
+<h1>
+<span class="action-span"><a>编辑客服信息</a></span>
+<span class="action-span1"><a href="#">活动管理系统</a> </span><span id="search_id" class="action-span1"> - 编辑客服信息 </span>
+<div style="clear:both"></div>
+</h1>
+
+<div class="main-div">
+  <form action="<?php echo site_url('admin/customermng/editcustomer/'.$row['cu_id'].'');?>" method="post" name="theForm" enctype="multipart/form-data">
+  <table width="100%" id="general-table">
+      <tr>
+        <td class="label">客服名称:</td>
+        <td>
+          <input type='text' name='cu_name' maxlength="20" value="<?php echo $row['cu_name'];?>" size='27' placeholder="输入客服名称"/> 
+		  <font color="red">*<?php echo form_error('cu_name');?></font>
+        </td>
+		
+      </tr>
+       <tr>
+        <td class="label">客服QQ:</td>
+        <td>
+          <input type='text' name='cu_qq' maxlength="20"  value="<?php echo $row['cu_qq'];?>" size='27' placeholder="输入客服QQ"/>
+		
+		  <font color="red">*<?php echo form_error('cu_qq');?></font>
+        </td>
+		
+      </tr>
+         <tr>
+        <td class="label">备注:</td>
+        <td>
+          <input type='text' name='cu_remark' maxlength="20"  value="<?php echo $row['cu_remark'];?>" size='27' placeholder="输入备注"/>
+		  <font color="red">*<?php echo form_error('cu_remark');?></font>
+        </td>
+		
+      </tr>
+      
+      </table>
+      <div class="button-div">
+		<input type="hidden" name="cu_id" value="<?php echo $row['cu_id'];?>"/>
+        <input type="submit" value=" 确定 " />
+        <input type="reset" value=" 重置 " />
+      </div>
+   
+  </form>
+</div>
+
+<div id="footer">
+
+版权所有 ©雅集文化传媒有限公司，并保留所有权利。</div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>活动管理系统 - 添加管理员 </title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="<?php echo base_url();?>application/views/admin/styles/general.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url();?>application/views/admin/styles/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url();?>application/views/admin/js/placeholder.js"></script>
+</head>
+<body>
+
+<h1>
+<span class="action-span"><a>添加管理员</a></span>
+<span class="action-span1"><a href="#">活动管理系统</a> </span><span id="search_id" class="action-span1"> - 添加管理员 </span>
+<div style="clear:both"></div>
+</h1>
+
+<div class="main-div">
+  <form action="<?php echo site_url('admin/adminsmng/editadmin/'.$admininfo['admin_id'].'');?>" method="post" name="theForm" enctype="multipart/form-data">
+  <table width="100%" id="general-table">
+      <tr>
+        <td class="label">管理员账号:</td>
+        <td>
+		<?php echo $admininfo['admin_name'];?>
+
+		  <font color="red">*</font>
+        </td>
+		
+      </tr>  
+	  
+	  <tr>
+        <td class="label">密码:</td>
+        <td>
+		  <font color="red">*由系统生成初始密码</font>
+        </td>
+		
+      </tr>  
+	  
+	   <tr>
+        <td class="label">是否启用:</td>
+        <td>
+          <input type='radio' name='is_normal'  value="0" <?php echo $admininfo['is_normal']=='0'?'checked="true"':'';?>/>禁用 
+		  <input type='radio' name='is_normal'  value="1" <?php echo $admininfo['is_normal']=='1'?'checked="true"':'';?>/>启用 
+		  <font color="red">*</font>
+        </td>
+		
+      </tr>  
+	  
+	  <tr>
+        <td class="label">选择管理员组:</td>
+        <td>
+          <select name='gid'> 
+		  <option style="width:165px;" value="0">不加入</option>
+		  <?php foreach($grouplist as $v){?>
+		  <option style="width:165px;" value="<?php echo $v['gid'];?>" <?php echo $v['gid']==$admininfo['gid']?'selected="true"':'';?>>|-<?php echo $v['gname'];?></option>
+		  <?php } ?>
+		  </select><font color="red">*</font>
+        </td>
+		
+      </tr>
+       <tr>
+        <td class="label">备注:</td>
+        <td>
+          <textarea name='remark' cols="25" rows="5" width="50" height="10">
+			<?php echo $admininfo['remark'];?>
+		  </textarea>
+		  <font color="red">*<?php echo form_error('remark');?></font>
+        </td>
+		
+      </tr>
+       
+      
+      </table>
+      <div class="button-div">
+        <input type="submit" value=" 确定 " />
+        <input type="reset" value=" 重置 " />
+      </div>
+   
+  </form>
+</div>
+
+<div id="footer">
+
+版权所有 ©雅集文化传媒有限公司，并保留所有权利。</div>
+
+</body>
+</html>

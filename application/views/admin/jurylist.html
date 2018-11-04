@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>活动管理系统 - 评委列表 </title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="<?php echo base_url();?>application/views/admin/styles/general.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url();?>application/views/admin/styles/main.css" rel="stylesheet" type="text/css" />
+<script type = 'text/javascript' src = '<?php echo base_url();?>application/views/admin/js/jquery-1.11.1.min.js'></script>
+<script type="text/javascript" src="<?php echo base_url();?>application/views/admin/js/placeholder.js"></script>
+</head>
+<body>
+<style>
+#tan{
+	position:absolute;
+	left:0;
+	top:0;
+	border:2px solid #DDEEF2;
+	width:360px;
+	height:130px;
+	background:#BBDDE5;
+	text-align:center;
+	line-height:130px;
+	font-size:16px;
+	color:white;
+	display:none;
+	z-index:5;
+}
+</style>
+<h1>
+<span class="action-span1"><a href="#">活动管理系统</a> </span><span id="search_id" class="action-span1"> - 评委列表 </span>
+<div style="clear:both"></div>
+</h1>
+<form method="post" action="" name="listForm"></form>
+<div class="list-div" id="listDiv">
+
+<table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+  <tr>
+    <th>账号</th>
+    <th>手机号码</th>
+    <th>真实姓名</th>
+	<th>邮箱</th>
+    <th>笔名</th>
+    <th>是否启用</th>
+	<th>添加时间</th>
+	<th>所属分类</th>
+    <th>操作</th>
+  </tr>
+  <?php foreach($jurylist as $v){?>
+    <tr align="center" class="0" id="0_1" id = 'tr_15'>
+    <td align="left" class="first-cell" style = 'padding-left="1"'>
+		<span><a><?php  echo $v['username'];?></a></span>
+    </td>
+    <td width="10%"><?php echo $v['telephone'];?></td>
+    <td width="10%"><span><?php echo $v['realname'];?></span></td>
+	<td width="10%"><span><?php echo $v['emailbox'];?></span></td>
+    <td width="10%"><?php echo $v['pseudonym'];?></td>
+    <td width="10%">
+		<img src="<?php echo $v['is_normal']==1?base_url().'application/views/admin/images/yes.gif':base_url().'application/views/admin/images/no.gif'?>" />
+	</td>
+	<td><span><?php echo date('Y-m-d,H:i:s',$v['addtime']);?></span></td>
+    <td><span><?php echo empty($v['cate_name'])?'':$v['cate_name'];?></span></td>
+    <td width="24%" align="center">
+		<a class="resetpwd" href="<?php echo site_url('admin/jurymng/resetpwd/'.$v['jid'].'');?>">重置密码|</a>
+		<a href="<?php echo site_url('admin/jurymng/editjury/'.$v['jid'].'');?>">编辑</a>
+    </td>
+  </tr>
+  <?php }?>
+  
+  </table>
+  <table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+	<tr>
+		<td rowspan="2" align="center"><?php echo $links;?></td>
+		
+	</tr>
+  </table>
+</div>
+<div id="tan"></div>
+<script type="text/javascript">
+$(function(){
+	$('.resetpwd').click(function(){
+		$.ajax({
+			url:$(this).attr('href'),
+			//type:'get',
+			success:function(data){
+				if(data == '1'){
+					$('#tan').show().html('√&nbsp;&nbsp;密码已重置').animate({
+						'left':$(window).width()/2-$('#tan').outerWidth(true)/2,
+						'top':$(window).height()/2-$('#tan').outerHeight(true)/2
+					},100);
+					setTimeout(function(){$('#tan').hide();},1900);
+				}
+				if(data == '0'){
+					$('#tan').show().html('X&nbsp;&nbsp;未重置密码').animate({
+						'left':$(window).width()/2-$('#tan').outerWidth(true)/2,
+						'top':$(window).height()/2-$('#tan').outerHeight(true)/2
+					},100);
+					setTimeout(function(){$('#tan').hide();},1900);
+				}
+				if(data == '2'){
+					$('#tan').show().html('X&nbsp;&nbsp;请联系管理员开通此权限').animate({
+						'left':$(window).width()/2-$('#tan').outerWidth(true)/2,
+						'top':$(window).height()/2-$('#tan').outerHeight(true)/2
+					},100);
+					setTimeout(function(){$('#tan').hide();},1900);
+				}
+			}
+		});
+		return false;
+	});
+	
+});
+</script>
+
+
+</body>
+</html>

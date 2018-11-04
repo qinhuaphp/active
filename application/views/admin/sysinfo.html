@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>活动管理系统 - 系统提示 </title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="<?php echo base_url();?>application/views/admin/styles/general.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url();?>application/views/admin/styles/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url();?>application/views/admin/js/placeholder.js"></script>
+</head>
+<body>
+
+<h1>
+<span class="action-span"><a>系统提示</a></span>
+<span class="action-span1"><a href="#">活动管理系统</a> </span><span id="search_id" class="action-span1"> - 系统提示 </span>
+<div style="clear:both"></div>
+</h1>
+
+<div class="main-div">
+  <table width="100%" id="general-table">
+      <tr>
+        <td class="label">温馨提示：</td>
+        <td>
+          <span style="color:red;font-size:16px;"><?php echo $tip.'&nbsp'.$time.'毫秒后自动返回上一页';?></span>
+        </td>
+		
+      </tr>
+		
+       
+      </table>
+ 
+</div>
+
+<div id="footer">
+
+版权所有 ©雅集文化传媒有限公司，并保留所有权利。</div>
+
+<script type="text/javascript">
+//clearTimeout(time);
+<?php if(!isset($url)){?>
+function back(){
+	history.back();
+}
+setTimeout('back()',<?php echo $time;?>);
+
+<?php }else{?>
+var url='<?php echo $url;?>';
+function gotourl(url){
+	parent.location.href=url;
+}
+setTimeout('gotourl(url)',<?php echo $time;?>);
+<?php } ?>
+</script>
+</body>
+</html>

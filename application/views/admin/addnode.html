@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>活动管理系统 - 添加权限 </title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="<?php echo base_url();?>application/views/admin/styles/general.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url();?>application/views/admin/styles/main.css" rel="stylesheet" type="text/css" />
+<script src="<?php echo base_url();?>application/views/admin/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>application/views/admin/js/placeholder.js"></script>
+</head>
+<body>
+<h1>
+<span class="action-span"><a>添加权限</a></span>
+<span class="action-span1"><a href="#">活动管理系统</a> </span><span id="search_id" class="action-span1"> - 添加权限 </span>
+<div style="clear:both"></div>
+</h1>
+
+<div class="main-div">
+  <form action="<?php echo site_url('admin/nodemng/addnode');?>" method="post" name="theForm" enctype="multipart/form-data">
+  <table width="100%" id="general-table">
+      <tr>
+        <td class="label">权限名称&lt英文&gt :</td>
+        <td>
+          <input type='text' name='nname'  value="<?php echo set_value('nname');?>" size='37' placeholder="输入权限名称"/> 
+		  <font color="red">*<?php echo form_error('nname');?></font>
+        </td>
+		
+      </tr>  
+
+       <tr>
+        <td class="label">备注&lt中文&gt :</td>
+        <td>
+          <textarea name='remark' cols="25" rows="5" width="50" height="10">
+			<?php echo set_value('remark');?>
+		  </textarea>
+		  <font color="red">*<?php echo form_error('remark');?></font>
+        </td>
+		
+      </tr>
+       
+      <tr>
+        <td class="label">类型 :</td>
+        <td>
+          <select name="level"> 
+			<option value="1" selected="true" style="width:165px;">频道</option>
+	        <option value="2" style="width:165px;">导航项</option>
+			<option value="3" style="width:165px;">操作</option>
+		  </select>
+		  <font color="red">*</font>
+        </td>
+		
+      </tr>  
+      
+	       <tr>
+        <td class="label">父级节点 :</td>
+        <td>
+          <select name="pid"> 
+			<option value="0" selected="true" style="width:165px;">顶级节点</option>
+			<?php foreach($parentnodes as $v){?>
+	        <option style="width:165px;" value="<?php echo $v['nid'];?>">|--<?php echo $v['remark'];?></option>
+			<?php } ?>
+		  </select>
+		  <font color="red">*</font>
+        </td>
+		
+      </tr>  
+	     </table>
+      <div class="button-div">
+        <input type="submit" value=" 确定 " />
+        <input type="reset" value=" 重置 " />
+      </div>
+
+  </form>
+</div>
+<script type="text/javascript">
+	/*$('.level1').find(':input').click(function(){
+		$(this).attr('checked','true');
+		$('.level1>.level2').find(':input').attr('checked','true');
+	});*/
+});
+</script>
+<div id="footer">
+
+版权所有 ©雅集文化传媒有限公司，并保留所有权利。</div>
+
+</body>
+</html>

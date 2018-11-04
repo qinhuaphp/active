@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>活动平台管理系统</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="<?php echo base_url();?>application/views/admin/styles/general.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url();?>application/views/admin/styles/main.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo base_url();?>application/views/admin/js/placeholder.js"></script>
+</head>
+<body>
+
+<h1>
+<span class="action-span1"><a href="#">系统信息</a> </span><span id="search_id" class="action-span1"></span>
+<div style="clear:both"></div>
+</h1>
+<ul id="lilist" style="padding:0; margin: 0; list-style-type:none; color: #CC0000;">
+  </ul>
+<ul style="padding:0; margin: 0; list-style-type:none; color: #CC0000;">
+
+</ul>
+<div class="list-div">
+<table cellspacing='1' cellpadding='3'>
+  <tr>
+    <th colspan="4" class="group-title">数据库信息</th>
+  </tr>
+  <tr>
+    <td width="20%"><a href="#">数据库平台:</a></td>
+    <td width="30%"><strong style="color: red"><?php echo $db;?></strong></td>
+
+    <td width="20%"><a href="#">数据库版本:</a></td>
+    <td width="30%"><strong style="color: red"><?php echo $version;?></strong></td>
+  </tr>
+</table>
+<table cellspacing='1' cellpadding='3'>
+  <tr><th colspan="4" class="group-title">服务器信息</th></tr>
+  <tr>
+    <td><a href="#">服务器环境:</a></td>
+    <td><strong style="color: red"><?php echo $server['SERVER_SOFTWARE'];?></strong></td>
+    <td><a href="#" >服务器名称:</a></td>
+
+    <td><strong style="color: red"><?php echo $server['SERVER_NAME'];?></strong></td>
+  </tr>
+  <tr>
+    <td><a href="#">服务器地址:</a></td>
+    <td><strong style="color: red"><?php echo $server['SERVER_ADDR'];?></strong></td>
+	<td><a href="#"></a></td>
+    <td><strong style="color: red"></strong></td>
+  </tr>
+ </table>
+ <table cellspacing='1' cellpadding='3'>
+	<tr><th colspan="4" class="group-title">客户端信息</th></tr>
+	<tr>
+    <td><a href="#">操作系统：</a></td>
+    <td><strong style="color: red"><?php echo $client_os;?></strong></td>
+	<td><a href="#">客户端地址:</a></td>
+	<td><strong style="color: red"><?php echo $ip_address;?></strong></td>
+  </tr>
+  <tr>
+    
+    <td><a href="#">客户端浏览器信息</a></td>
+    <td><strong style="color: red"><?php echo $client_browser;?></strong></td>
+	<td><a href="#"></a></td>
+    <td><strong style="color: red"></strong></td>
+
+  </tr>
+</table>
+</div>
+
+
+
+<div id="footer">
+版权所有 &copy;雅集文化传媒有限公司，并保留所有权利。
+</div>
+
+</body>
+</html>

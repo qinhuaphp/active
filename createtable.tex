@@ -1,0 +1,66 @@
+create table systemsetup(/*系统设置表*/
+sysid int primary key auto_increment,
+setupname varchar(50) not null default '',
+setupvalue varchar(60) not null default ''
+)engine=myisam;
+
+create table customer(/*客服表*/
+cu_id int primary key  auto_increment,
+cu_name varchar(50) not null,
+cu_qq varchar(15) not null unique,
+cu_remark varchar(60) not null
+)engine=myisam;
+
+create table cate(/*分类表*/
+cate_id int primary key auto_increment,
+cate_name varchar(30) uniqeu not null default '',
+cate_introl varchar(60) not null default '',
+pid int not null default '0'
+)engine=myisam;
+/*评委表*///账号//5位随机数的安全码//密码//真实名称//手机号码//笔名//关联的分类id//是否正常，0为不正常 1为正常//个人简介//履历//关联的活动id//添加时间
+create table jury(
+jid int primary key auto_increment,
+username varchar(30) unique not null  default '',
+password char(32) not null,
+security_code char(5) not null default '',
+realname varchar(60) not null default '',
+telephone char(12)  unique not null default'',
+emailbox varchar(255) unique not null default'',
+pseudonym varchar(60) not null default '',
+cate_id int not null default '0',
+is_normal char(1) not null default '1',
+introl varchar(255) not null default '',
+resume varchar(255) not null default '',
+activities_id varchar(255) not null default '',
+addtime char(12) not null default ''
+)engine=myisam;
+/*管理员表*/
+CREATE TABLE `admins` (
+  `admin_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `admin_name` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `password` char(32) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` char(12) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `last_login_time` char(12) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `last_login_ip` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `gid` int(11) NOT NULL DEFAULT '0',
+  `security_code` char(5) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `is_normal` char(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `remark` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  PRIMARY KEY (`admin_id`),
+  UNIQUE KEY `admin_name` (`admin_name`)
+) ENGINE=myisam AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
+/*管理员组表*/
+create table admingroup(
+gid int primary key auto_increment,
+gname varchar(30) not null default '',
+remark varchar(255) not null default '',
+is_normal char(1) not null default '1',
+nid varchar(255) not null default ''
+)engine=myisam;
+/*权限表*/
+create table node(
+nid int primary key auto_increment,
+nname varchar(255) unique not null,
+remark varchar(255) not null default '',
+level tinyint(2)unsigned not null default '0'//级别 0为模块（控制器），1为操作（方法）
+)engine=myisam;
